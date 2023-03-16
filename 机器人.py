@@ -120,7 +120,7 @@ with open(file='can_use_python_list.txt', mode='r+', encoding='utf-8') as f:
         f.close()
 
 
-openai.api_key = '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'
+openai.api_key = ''#填入你的api key
 
 
 def send_group_message(group, message):
@@ -506,7 +506,7 @@ def get_json():
                                                                        '[CQ:at,qq={}] 您的代码中有敏感词！commands'.format(
                                                                            user_id))
                                                 else:
-                                                    string = r'D:\python3913\python.exe D:\pythonproject\3000_lines_code\qq群机器人\run_command.py'
+                                                    string = r''#运行，改为你的路径
                                                     cmd_output = []
                                                     cmd_error = []
                                                     run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -532,7 +532,7 @@ def get_json():
                                                     message = message_.split(' ', 2)
                                                     f.write(message[2])
                                                     f.close()
-                                                string = r'D:\java19\bin\java.exe D:\pythonproject\3000_lines_code\qq群机器人\Main.java' #运行
+                                                string = r'' #运行，改为你的路径
                                                 cmd_output = []
                                                 cmd_error = []
                                                 run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -558,7 +558,7 @@ def get_json():
                                                     message = message_.split(' ', 2)
                                                     f.write(message[2])
                                                     f.close()
-                                                string = r'D:/dev_c++/Dev-Cpp/MinGW64/bin/gcc.exe D:\pythonproject\3000_lines_code\qq群机器人\library.c -o library' #编译器
+                                                string = r'' #编译器，改为你的路径
                                                 cmd_output = []
                                                 cmd_error = []
                                                 run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -575,7 +575,7 @@ def get_json():
                                                 send_group_message(group,
                                                                    '[CQ:at,qq={}] 编译结果：\n输出：{}，\n错误：{}'.format(
                                                                        user_id, cmd_output, cmd_error))
-                                                string = r'D:\pythonproject\3000_lines_code\qq群机器人\library.exe' #运行
+                                                string = r'' #运行，改为你的路径
                                                 cmd_output = []
                                                 cmd_error = []
                                                 run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=False)
@@ -711,7 +711,7 @@ def get_json():
                                                         break
                                                     num += 1
                                                 cont = list(sec_col)[num]
-                                                json = req.get('https://restapi.amap.com/v3/weather/weatherInfo?city={}&key=704f544a0db833bc8ddb860989391d80'.format(cont))
+                                                json = req.get('https://restapi.amap.com/v3/weather/weatherInfo?city={}&key='.format(cont))#在key选项中填入你的key
                                                 print(json.json())
                                                 content = '城市为：{}\n天气为：{}\n温度为：{}\n风向为：{}\n风级为：{}\n时间：{}'.format(json.json()['lives'][0]['province'], json.json()['lives'][0]['weather'], json.json()['lives'][0]['temperature_float'], json.json()['lives'][0]['winddirection'], json.json()['lives'][0]['windpower'], json.json()['lives'][0]['reporttime'])
                                                 send_group_message(group, '[CQ:at,qq={}] {}'.format(user_id, content))
@@ -763,6 +763,7 @@ def get_json():
                                                 send_group_message(group, r'生成成功！图片[CQ:image,file=qrcode.png]')
                                         elif message[1] == '撤回消息':
                                             delete_group_message()
+                                           '''
                                         elif message[1] == '加密':
                                             message = message_.split(' ', 2)
                                             string = message[2]
@@ -779,6 +780,7 @@ def get_json():
                                             new = parse.unquote(string_de)
                                             print(string_de)
                                             send_group_message(group, '[CQ:at,qq={}] 明文：{}'.format(user_id, new))
+                                            '''# 本段代码有问题，请自行解决
                                         elif message[1] == 'chat':
                                             if user_id in chat_gpt_list:
                                                 try:
@@ -805,7 +807,7 @@ def get_json():
                                                     image_rul = image["data"][0]["url"]
                                                     res = req.get(image_rul)
                                                     f = open(
-                                                        file=r'D:\pythonproject\3000_lines_code\qq群机器人\cqhttp\data\images\image.jpg',
+                                                        file=r'', #改为你的路径
                                                         mode='wb')
                                                     f.write(res.content)
                                                     f.close()
@@ -824,7 +826,7 @@ def get_json():
                                                     image_rul = image["data"][0]["url"]
                                                     res = req.get(image_rul)
                                                     f = open(
-                                                        file=r'D:\pythonproject\3000_lines_code\qq群机器人\cqhttp\data\images\image.jpg',
+                                                        file=r'',#改为你的路径
                                                         mode='wb')
                                                     f.write(res.content)
                                                     f.close()
@@ -836,11 +838,11 @@ def get_json():
                                         elif message[1] == '赞助':
                                             if message[2] == '微信':
                                                 send_group_message(group,
-                                                                   '[CQ:at,qq={}][CQ:image,file=weixinpay.png]求求赞助一下吧！'.format(
+                                                                   ''.format(# 改为你的赞助吗
                                                                        user_id))
                                             if message[2] == 'QQ' or message[2] == 'qq':
                                                 send_group_message(group,
-                                                                   '[CQ:at,qq={}][CQ:image,file=qqpay.png]求求赞助一下吧！'.format(
+                                                                   ''.format(# 改为你的赞助码
                                                                        user_id))
                                         elif message[1] == '反馈':
                                             content = message[2]
@@ -860,7 +862,7 @@ def get_json():
                                         elif message[1] == 'ip' or message[1] == 'IP':
                                             ip = message[2]
                                             json = req.get(
-                                                'https://restapi.amap.com/v3/ip?ip={}&output=json&key=704f544a0db833bc8ddb860989391d80'.format(ip))
+                                                'https://restapi.amap.com/v3/ip?ip={}&output=json&key='.format(ip))#在key中改为你的key
                                             cmd_output = []
                                             ping = Popen('ping {}'.format(ip), stdout=PIPE, shell=True, close_fds=True)
                                             cmd_res['out'] = ping.stdout.readlines()
@@ -964,7 +966,7 @@ def get_json():
                                                                 f.write(message[2])
                                                         finally:
                                                             f.close()
-                                                    string = r'D:\python3913\python.exe D:\pythonproject\3000_lines_code\qq群机器人\run_command.py'
+                                                    string = r''#改为你的路径
                                                     cmd_output = []
                                                     cmd_error = []
                                                     run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -1156,13 +1158,14 @@ def get_json():
                                     else:
                                         send_group_message(group, '[CQ:at,qq={}] 管理员已禁用！'.format(user_id))
                                 else:
-                                    send_group_message(request_get_json['group_id'], '[CQ:at,qq={}] 你没有权限!请跟[CQ:at,'
-                                                                                         'qq=771732203]联系并索取！'.format(
+                                    send_group_message(request_get_json['group_id'], '[CQ:at,qq={}] 你没有权限!请跟@小井井'
+                                                                                         '联系并索取！'.format(
                                             user_id))
                         except Exception as e:
                             send_group_message(group, '[CQ:at,qq={}] 发生错误：{}！'.format(user_id, str(e)))
                             raise
                     elif request_get_json['message_type'] == 'private':
+                        #本段功能并未完善，可以抄着上面的去增加功能
                         print(request_get_json)
                         message_ = request_get_json['message']
                         user_id = request_get_json['sender']['user_id']
@@ -1200,8 +1203,8 @@ def get_json():
                                 send_private_message(user_id,
                                                    '您的代码中有敏感词！commands')
                             else:
-                                string = 'D:\python3913\python.exe {}'.format(
-                                                        r'D:\pythonproject\3000_lines_code\qq群机器人\run_command.py')
+                                string = ' {}'.format(
+                                                        r'')#改为你的路径
                                 cmd_output = []
                                 cmd_error = []
                                 run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -1222,7 +1225,7 @@ def get_json():
                                 message = message_.split(' ', 2)
                                 f.write(message[2])
                                 f.close()
-                            string = r'D:\java19\bin\java.exe D:\pythonproject\3000_lines_code\qq群机器人\Main.java'
+                            string = r''#改为你的路径
                             cmd_output = []
                             cmd_error = []
                             run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -1243,7 +1246,7 @@ def get_json():
                                 message = message_.split(' ', 2)
                                 f.write(message[2])
                                 f.close()
-                            string = r'D:/dev_c++/Dev-Cpp/MinGW64/bin/gcc.exe -o library D:\c_project\library.c'
+                            string = r''#改为你的路径
                             cmd_output = []
                             cmd_error = []
                             run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -1259,7 +1262,7 @@ def get_json():
                                 cmd_output[temp] = cmd_output[temp].replace('\r\n', '    ')
                             send_private_message(user_id,
                                                '编译结果：\n输出：{}，\n错误：{}'.format(cmd_output, cmd_error))
-                            string = r'D:\pythonproject\3000_lines_code\qq群机器人\library.exe'
+                            string = r''#改为你的路径
                             cmd_output = []
                             cmd_error = []
                             run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -1308,7 +1311,7 @@ def get_json():
                                 qr.make()
                                 img = qr.make_image(fill_color="orange", back_color="red")
                                 with open(
-                                        r'D:\pythonproject\3000_lines_code\qq群机器人\cqhttp\data\images\qrcode.png',
+                                        r'',#改为你的路径
                                         'wb') as f:
                                     img.save(f)
                                     f.close()
@@ -1317,6 +1320,7 @@ def get_json():
                             delete_private_message()
                         elif message[0] == '查询音乐':
                             pass
+                        '''
                         elif message[0] == '加密':
                             message = message_.split(' ', 2)
                             string = message[1]
@@ -1333,6 +1337,7 @@ def get_json():
                             new = parse.unquote(string_de)
                             print(string_de)
                             send_private_message(user_id, '明文：{}'.format(new))
+                            '''#本段代码有问题，请自行解决
                         elif message[0] == 'chat':
                             try:
                                 prompt = message[1]
