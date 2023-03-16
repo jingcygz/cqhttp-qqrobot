@@ -1,0 +1,1 @@
+send_group_message(155816967, '[CQ:face,id=123]')
