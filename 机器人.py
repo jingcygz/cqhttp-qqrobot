@@ -763,23 +763,23 @@ def get_json():
                                                 send_group_message(group, r'生成成功！图片[CQ:image,file=qrcode.png]')
                                         elif message[1] == '撤回消息':
                                             delete_group_message()
-                                           '''
-                                        elif message[1] == '加密':
-                                            message = message_.split(' ', 2)
-                                            string = message[2]
-                                            string_en = parse.quote(string)
-                                            print(string_en)
-                                            e = Encode(code=CODE)
-                                            new = e.encode(string_en)
-                                            send_group_message(group, '[CQ:at,qq={}] 密文：{}'.format(user_id, new))
-                                        elif message[1] == '解密':
-                                            message = message_.split(' ', 2)
-                                            num = int(message[2])
-                                            d = Decode(code=CODE)
-                                            string_de = d.decode(num)
-                                            new = parse.unquote(string_de)
-                                            print(string_de)
-                                            send_group_message(group, '[CQ:at,qq={}] 明文：{}'.format(user_id, new))
+                                            '''
+                                            elif message[1] == '加密':
+                                                message = message_.split(' ', 2)
+                                                string = message[2]
+                                                string_en = parse.quote(string)
+                                                print(string_en)
+                                                e = Encode(code=CODE)
+                                                new = e.encode(string_en)
+                                                send_group_message(group, '[CQ:at,qq={}] 密文：{}'.format(user_id, new))
+                                            elif message[1] == '解密':
+                                                message = message_.split(' ', 2)
+                                                num = int(message[2])
+                                                d = Decode(code=CODE)
+                                                string_de = d.decode(num)
+                                                new = parse.unquote(string_de)
+                                                print(string_de)
+                                                send_group_message(group, '[CQ:at,qq={}] 明文：{}'.format(user_id, new))
                                             '''# 本段代码有问题，请自行解决
                                         elif message[1] == 'chat':
                                             if user_id in chat_gpt_list:
@@ -1320,23 +1320,23 @@ def get_json():
                             delete_private_message()
                         elif message[0] == '查询音乐':
                             pass
-                        '''
-                        elif message[0] == '加密':
-                            message = message_.split(' ', 2)
-                            string = message[1]
-                            string_en = parse.quote(string)
-                            print(string_en)
-                            e = Encode(code=CODE)
-                            new = e.encode(string_en)
-                            send_private_message(user_id, '密文：{}'.format(new))
-                        elif message[0] == '解密':
-                            message = message_.split(' ', 2)
-                            num = int(message[1])
-                            d = Decode(code=CODE)
-                            string_de = d.decode(num)
-                            new = parse.unquote(string_de)
-                            print(string_de)
-                            send_private_message(user_id, '明文：{}'.format(new))
+                            '''
+                            elif message[0] == '加密':
+                                message = message_.split(' ', 2)
+                                string = message[1]
+                                string_en = parse.quote(string)
+                                print(string_en)
+                                e = Encode(code=CODE)
+                                new = e.encode(string_en)
+                                send_private_message(user_id, '密文：{}'.format(new))
+                            elif message[0] == '解密':
+                                message = message_.split(' ', 2)
+                                num = int(message[1])
+                                d = Decode(code=CODE)
+                                string_de = d.decode(num)
+                                new = parse.unquote(string_de)
+                                print(string_de)
+                                send_private_message(user_id, '明文：{}'.format(new))
                             '''#本段代码有问题，请自行解决
                         elif message[0] == 'chat':
                             try:
