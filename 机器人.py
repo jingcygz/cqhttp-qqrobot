@@ -120,7 +120,7 @@ with open(file='can_use_python_list.txt', mode='r+', encoding='utf-8') as f:
         f.close()
 
 
-openai.api_key = ''#填入你的api key
+openai.api_key = ''
 
 
 def send_group_message(group, message):
@@ -408,24 +408,24 @@ def get_json():
                                                                                                              request_get_json['message'],
                                                                                                              request_get_json['group_id']))
                         try:
-                            if message[0] == '[CQ:at,qq=1978436936]' or message[0] == 'ai':
+                            if message[0] == '[CQ:at,qq=1978436936]' or message[0] == 'ai' or message[0] == '@小井井的ai' or message[0] == 'AI' or message[0] == '@小井井的AI':
                                 if user_id not in blacklist:
                                     print(message)
                                     if not OPonly or user_id in adminlist:
                                         if '你好' == message[1]:
                                             # 你好功能
                                             send_group_message(group,
-                                            '[CQ:at,qq={}] 你好呀\n我是@QQ小井井开发的机器人\n功能不太足\n可以用另外一个人的\nQQ号：2439973472\n版本：beta5.0.0\n请多多关照\n[CQ:image,file=网站.png]！'.format(user_id))
+                                            '[CQ:at,qq={}] 你好呀\n我是@QQ小井井开发的机器人\n功能不太足\n可以用另外一个人的\nQQ号：2439973472\n版本：beta5.0.0\n请多多关照\n[CQ:image,file=网站.png]'.format(user_id))
                                         elif '功能' == message[1]:
                                             # 功能功能
-                                            send_group_message(group, '[CQ:at,qq={}]hello，我是[CQ:at,'
-                                                                      'qq=771732203]研发的机器人，\n功能1：你好打招呼功能\n功能2：查询功能功能\n功能3'
+                                            send_group_message(group, '[CQ:at,qq={}]hello，我是@小井井'
+                                                                      '研发的机器人，\n功能1：你好打招呼功能\n功能2：查询功能功能\n功能3'
                                                                       '：运行python'
                                                                       '功能\n功能4：投票功能\n功能5：抽奖\n功能6：接龙\n功能7：查询天气\n功能8：生成二维码\n功能9'
                                                                       '：撤回消息（无消息）\n功能10：加/解密\n功能11：chatgpt'
-                                                                      '问答（作者申请了好久的账号，给点赞助吧！）\n功能12：赞助\n功能13：反馈\n功能14：管理员\n功能15：群聊设置\n功能16：运行Java\n功能17：运行c\n功能18：生成图片\n功能19：功能用法查询'
-                                                                      '即将开发：搜索音乐！\n可以联系['
-                                                                      'CQ:at,qq=771732203]反馈哟！'.format(user_id))
+                                                                      '问答（作者申请了好久的账号，给点赞助吧！）\n功能12：赞助\n功能13：反馈\n功能14：管理员\n功能15：群聊设置\n功能16：运行Java\n功能17：运行c\n功能18：生成图片\n功能19：功能用法查询\n功能20：搜索歌曲\n功能21：ip地址\n功能22：github项目\n功能23：bilibili up主\n功能24：随机听歌'
+                                                                      '\n可以联系'
+                                                                      '@小井井（771732203）反馈哟！'.format(user_id))
                                         elif '查询功能' == message[1]:
                                             gn = message[2]
                                             if gn == '运行python':
@@ -483,7 +483,22 @@ def get_json():
                                                 send_group_message(group, '[CQ:at,qq={}] at 运行java （代码）'.format(user_id))
                                             elif gn == '运行c':
                                                 send_group_message(group,
-                                                                   '[CQ:at,qq={}] at 运行c （代码）'.format(user_id))
+                                                                   '[CQ:at,qq={}] 用法为：at 运行c （代码）'.format(user_id))
+                                            elif gn == '搜索歌曲':
+                                                send_group_message(group,
+                                                                   '[CQ:at,qq={}] 用法为：at 点歌 （歌名）'.format(user_id))
+                                            elif gn == 'ip地址':
+                                                send_group_message(group,
+                                                                   '[CQ:at,qq={}] 用法为：at ip （ip地址）'.format(user_id))
+                                            elif gn == 'github项目':
+                                                send_group_message(group,
+                                                                   '[CQ:at,qq={}] 用法为：at 搜索github （项目名）'.format(user_id))
+                                            elif gn == 'up主':
+                                                send_group_message(group,
+                                                                   '[CQ:at,qq={}] 用法为：at up （up名）'.format(user_id))
+                                            elif gn == '随机听歌':
+                                                send_group_message(group,
+                                                                   '[CQ:at,qq={}] 用法为：at 点歌'.format(user_id))
                                         elif message[1] == '运行python':
                                             # 运行代码功能
                                             if user_id in python_list:
@@ -506,7 +521,7 @@ def get_json():
                                                                        '[CQ:at,qq={}] 您的代码中有敏感词！commands'.format(
                                                                            user_id))
                                                 else:
-                                                    string = r''#运行，改为你的路径
+                                                    string = r''
                                                     cmd_output = []
                                                     cmd_error = []
                                                     run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -532,7 +547,7 @@ def get_json():
                                                     message = message_.split(' ', 2)
                                                     f.write(message[2])
                                                     f.close()
-                                                string = r'' #运行，改为你的路径
+                                                string = r'' #运行
                                                 cmd_output = []
                                                 cmd_error = []
                                                 run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -558,7 +573,7 @@ def get_json():
                                                     message = message_.split(' ', 2)
                                                     f.write(message[2])
                                                     f.close()
-                                                string = r'' #编译器，改为你的路径
+                                                string = r'' #编译器
                                                 cmd_output = []
                                                 cmd_error = []
                                                 run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -575,7 +590,7 @@ def get_json():
                                                 send_group_message(group,
                                                                    '[CQ:at,qq={}] 编译结果：\n输出：{}，\n错误：{}'.format(
                                                                        user_id, cmd_output, cmd_error))
-                                                string = r'' #运行，改为你的路径
+                                                string = r'' #运行
                                                 cmd_output = []
                                                 cmd_error = []
                                                 run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=False)
@@ -700,7 +715,7 @@ def get_json():
                                                                            d["data"]["forecast"][0]["type"]))
                                             elif message[2] == '高德':
                                                 workbook = xlrd.open_workbook(
-                                                    r'D:\pythonproject\3000_lines_code\qq群机器人\acode.xlsx')
+                                                    r'')
                                                 string = message[3]
                                                 num = 0
                                                 sheet = workbook.sheet_by_index(0)
@@ -711,7 +726,7 @@ def get_json():
                                                         break
                                                     num += 1
                                                 cont = list(sec_col)[num]
-                                                json = req.get('https://restapi.amap.com/v3/weather/weatherInfo?city={}&key='.format(cont))#在key选项中填入你的key
+                                                json = req.get('https://restapi.amap.com/v3/weather/weatherInfo?city={}&key='.format(cont))
                                                 print(json.json())
                                                 content = '城市为：{}\n天气为：{}\n温度为：{}\n风向为：{}\n风级为：{}\n时间：{}'.format(json.json()['lives'][0]['province'], json.json()['lives'][0]['weather'], json.json()['lives'][0]['temperature_float'], json.json()['lives'][0]['winddirection'], json.json()['lives'][0]['windpower'], json.json()['lives'][0]['reporttime'])
                                                 send_group_message(group, '[CQ:at,qq={}] {}'.format(user_id, content))
@@ -744,7 +759,7 @@ def get_json():
                                                 qr.make(message[6])
                                                 img = qr.make_image(fill_color=message[7], back_color=message[8])
                                                 with open(
-                                                        r'D:\pythonproject\3000_lines_code\qq群机器人\cqhttp\data\images\qrcode.png',
+                                                        r'',
                                                         'wb') as f:
                                                     img.save(f)
                                                     f.close()
@@ -756,31 +771,29 @@ def get_json():
                                                 qr.make()
                                                 img = qr.make_image(fill_color="orange", back_color="red")
                                                 with open(
-                                                        r'D:\pythonproject\3000_lines_code\qq群机器人\cqhttp\data\images\qrcode.png',
+                                                        r'',
                                                         'wb') as f:
                                                     img.save(f)
                                                     f.close()
                                                 send_group_message(group, r'生成成功！图片[CQ:image,file=qrcode.png]')
                                         elif message[1] == '撤回消息':
                                             delete_group_message()
-                                            '''
-                                            elif message[1] == '加密':
-                                                message = message_.split(' ', 2)
-                                                string = message[2]
-                                                string_en = parse.quote(string)
-                                                print(string_en)
-                                                e = Encode(code=CODE)
-                                                new = e.encode(string_en)
-                                                send_group_message(group, '[CQ:at,qq={}] 密文：{}'.format(user_id, new))
-                                            elif message[1] == '解密':
-                                                message = message_.split(' ', 2)
-                                                num = int(message[2])
-                                                d = Decode(code=CODE)
-                                                string_de = d.decode(num)
-                                                new = parse.unquote(string_de)
-                                                print(string_de)
-                                                send_group_message(group, '[CQ:at,qq={}] 明文：{}'.format(user_id, new))
-                                            '''# 本段代码有问题，请自行解决
+                                        elif message[1] == '加密':
+                                            message = message_.split(' ', 2)
+                                            string = message[2]
+                                            string_en = parse.quote(string)
+                                            print(string_en)
+                                            e = Encode(code=CODE)
+                                            new = e.encode(string_en)
+                                            send_group_message(group, '[CQ:at,qq={}] 密文：{}'.format(user_id, new))
+                                        elif message[1] == '解密':
+                                            message = message_.split(' ', 2)
+                                            num = int(message[2])
+                                            d = Decode(code=CODE)
+                                            string_de = d.decode(num)
+                                            new = parse.unquote(string_de)
+                                            print(string_de)
+                                            send_group_message(group, '[CQ:at,qq={}] 明文：{}'.format(user_id, new))
                                         elif message[1] == 'chat':
                                             if user_id in chat_gpt_list:
                                                 try:
@@ -807,7 +820,7 @@ def get_json():
                                                     image_rul = image["data"][0]["url"]
                                                     res = req.get(image_rul)
                                                     f = open(
-                                                        file=r'', #改为你的路径
+                                                        file=r'',
                                                         mode='wb')
                                                     f.write(res.content)
                                                     f.close()
@@ -826,7 +839,7 @@ def get_json():
                                                     image_rul = image["data"][0]["url"]
                                                     res = req.get(image_rul)
                                                     f = open(
-                                                        file=r'',#改为你的路径
+                                                        file=r'',
                                                         mode='wb')
                                                     f.write(res.content)
                                                     f.close()
@@ -838,11 +851,11 @@ def get_json():
                                         elif message[1] == '赞助':
                                             if message[2] == '微信':
                                                 send_group_message(group,
-                                                                   ''.format(# 改为你的赞助吗
+                                                                   '[CQ:at,qq={}][CQ:image,file=weixinpay.png]求求赞助一下吧！'.format(
                                                                        user_id))
                                             if message[2] == 'QQ' or message[2] == 'qq':
                                                 send_group_message(group,
-                                                                   ''.format(# 改为你的赞助码
+                                                                   '[CQ:at,qq={}][CQ:image,file=qqpay.png]求求赞助一下吧！'.format(
                                                                        user_id))
                                         elif message[1] == '反馈':
                                             content = message[2]
@@ -862,7 +875,7 @@ def get_json():
                                         elif message[1] == 'ip' or message[1] == 'IP':
                                             ip = message[2]
                                             json = req.get(
-                                                'https://restapi.amap.com/v3/ip?ip={}&output=json&key='.format(ip))#在key中改为你的key
+                                                'https://restapi.amap.com/v3/ip?ip={}&output=json&key='.format(ip))
                                             cmd_output = []
                                             ping = Popen('ping {}'.format(ip), stdout=PIPE, shell=True, close_fds=True)
                                             cmd_res['out'] = ping.stdout.readlines()
@@ -966,7 +979,7 @@ def get_json():
                                                                 f.write(message[2])
                                                         finally:
                                                             f.close()
-                                                    string = r''#改为你的路径
+                                                    string = r''
                                                     cmd_output = []
                                                     cmd_error = []
                                                     run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -1158,53 +1171,130 @@ def get_json():
                                     else:
                                         send_group_message(group, '[CQ:at,qq={}] 管理员已禁用！'.format(user_id))
                                 else:
-                                    send_group_message(request_get_json['group_id'], '[CQ:at,qq={}] 你没有权限!请跟@小井井'
-                                                                                         '联系并索取！'.format(
+                                    send_group_message(request_get_json['group_id'], '[CQ:at,qq={}] 你没有权限!请跟[CQ:at,'
+                                                                                         'qq=771732203]联系并索取！'.format(
                                             user_id))
                         except Exception as e:
                             send_group_message(group, '[CQ:at,qq={}] 发生错误：{}！'.format(user_id, str(e)))
                             raise
                     elif request_get_json['message_type'] == 'private':
-                        #本段功能并未完善，可以抄着上面的去增加功能
                         print(request_get_json)
                         message_ = request_get_json['message']
                         user_id = request_get_json['sender']['user_id']
                         message = message_.split(' ', 3)
                         print(message)
-                        if '你好' == message[0]:
-                            # 你好功能
-                            send_private_message(user_id,
-                                               'hello')
-                        elif '功能' == message[0]:
-                            # 功能功能
-                            send_private_message(user_id, 'hello\n功能1：你好打招呼功能\n功能2：查询功能功能\n功能3'
-                                                      '：运行python'
-                                                      '功能4：查询天气\n功能5：生成二维码\n功能6'
-                                                      '：撤回消息（无消息）\n功能7：加/解密\n功能8：chatgpt'
-                                                      '问答（作者申请了好久的账号，给点赞助吧！）\n功能9：赞助\n功能10：反馈')
-                        elif '查询功能' == message[0]:
-                            pass
-                        elif message[0] == '运行python':
-                            # 运行代码功能
-                            with open(file=r'.\run_command.py', mode='w+', encoding='utf-8') as f:
-                                message = message_.split(' ', 2)
-                                f.write(message[2])
-                                f.close()
-                            with open(file=r'.\run_command.py', mode='r+', encoding='utf-8') as f:
-                                r = f.read()
-                                f.close()
-                            if 'os' in r:
+                        if user_id in blacklist:
+                            if '你好' == message[0]:
+                                # 你好功能
                                 send_private_message(user_id,
-                                                   '您的代码中有敏感词！os')
-                            elif 'subprocess' in r:
-                                send_private_message(user_id,
-                                                   '您的代码中有敏感词！subprocess')
-                            elif 'commands' in r:
-                                send_private_message(user_id,
-                                                   '您的代码中有敏感词！commands')
-                            else:
-                                string = ' {}'.format(
-                                                        r'')#改为你的路径
+                                                   '你好呀\n我是@QQ小井井开发的机器人\n功能不太足\n可以用另外一个人的\nQQ号：2439973472\n版本：beta5.0.0\n请多多关照\n[CQ:image,file=网站.png]')
+                            elif '功能' == message[0]:
+                                # 功能功能
+                                send_private_message(user_id, 'hello，我是@小井井'
+                                                                      '研发的机器人，\n功能1：你好打招呼功能\n功能2：查询功能功能\n功能3'
+                                                                      '：运行python'
+                                                                      '功能\n功能4：查询天气\n功能5：生成二维码\n功能6'
+                                                                      '：撤回消息（无消息）\n功能7：加/解密\n功能8：chatgpt'
+                                                                      '问答（作者申请了好久的账号，给点赞助吧！）\n功能9：赞助\n功能10：反馈\n功能11：管理员\n功能12：运行Java\n功能13：运行c\n功能14：生成图片\n功能15：功能用法查询\n功能16：搜索歌曲\n功能17：ip地址\n功能18：github项目\n功能19：bilibili up主\n功能20：随机听歌'
+                                                                      '\n可以联系'
+                                                                      '@小井井（771732203）反馈哟！')
+                            elif '查询功能' == message[0]:
+                                gn = message[2]
+                                if gn == '运行python':
+                                    send_private_message(user_id,
+                                                       '用法为：运行python （代码）（注：需要权限）')
+                                elif gn == '运行java':
+                                    send_private_message(user_id,
+                                                       '用法为：运行java （代码）（注：需要权限）')
+                                elif gn == '运行c':
+                                    send_private_message(user_id,
+                                                       '用法为：运行c （代码）（注：需要权限）')
+                                elif gn == '查询天气':
+                                    send_private_message(user_id, '用法为：查询天气 （地名）')
+                                elif gn == '生成二维码':
+                                    send_private_message(user_id,
+                                                       '用法为：生成二维码 （内容）以下为可选：（大小） （长，推荐20） （宽，推荐4） （重复，填是或者否） （填充颜色） （二维码颜色）')
+                                elif gn == '撤回消息':
+                                    send_private_message(user_id, '用法为：撤回消息')
+                                elif gn == '加密':
+                                    send_private_message(user_id, '用法为：加密 （文字）')
+                                elif gn == '解密':
+                                    send_private_message(user_id,
+                                                       '用法为：解密 （文字）')
+                                elif gn == 'chatgpt':
+                                    send_private_message(user_id, '用法为：at chat （文字）')
+                                elif gn == '赞助':
+                                    send_private_message(user_id,
+                                                       '用法为：赞助 （微信或者qq）')
+                                elif gn == '生成图片 ':
+                                    send_private_message(user_id,
+                                                       '用法为：生成图片 （文字） 可选内容：（大小：只支持256x256,512x512,1024x1024）')
+                                elif gn == '反馈':
+                                    send_private_message(user_id, '用法为：反馈 （文字）')
+                                elif gn == '管理员':
+                                    send_private_message(user_id,
+                                                       '用此功能为内部用法请联系小井井获取权限！')
+                                elif gn == '运行java':
+                                    send_private_message(user_id, '运行java （代码）')
+                                elif gn == '运行c':
+                                    send_private_message(user_id,
+                                                       '用法为：运行c （代码）')
+                                elif gn == '搜索歌曲':
+                                    send_private_message(user_id,
+                                                       '用法为：点歌 （歌名）')
+                                elif gn == 'ip地址':
+                                    send_private_message(user_id,
+                                                       '用法为：ip （ip地址）')
+                                elif gn == 'github项目':
+                                    send_private_message(user_id,
+                                                       '用法为：搜索github （项目名）')
+                                elif gn == 'up主':
+                                    send_private_message(user_id,
+                                                       '用法为：up （up名）')
+                                elif gn == '随机听歌':
+                                    send_private_message(user_id,
+                                                       '用法为：点歌 （歌名）')
+                            elif message[0] == '运行python':
+                                # 运行代码功能
+                                with open(file=r'.\run_command.py', mode='w+', encoding='utf-8') as f:
+                                    message = message_.split(' ', 2)
+                                    f.write(message[2])
+                                    f.close()
+                                with open(file=r'.\run_command.py', mode='r+', encoding='utf-8') as f:
+                                    r = f.read()
+                                    f.close()
+                                if 'os' in r:
+                                    send_private_message(user_id,
+                                                       '您的代码中有敏感词！os')
+                                elif 'subprocess' in r:
+                                    send_private_message(user_id,
+                                                       '您的代码中有敏感词！subprocess')
+                                elif 'commands' in r:
+                                    send_private_message(user_id,
+                                                       '您的代码中有敏感词！commands')
+                                else:
+                                    string = ''
+                                    cmd_output = []
+                                    cmd_error = []
+                                    run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
+                                    cmd_res['out'] = run.stdout.readlines()
+                                    cmd_res['error'] = run.stderr.readlines()
+                                    for temp in cmd_res['out']:
+                                        cmd_output.append(temp.decode('gbk'))
+                                    for temp in cmd_res['error']:
+                                        cmd_error.append(temp.decode('gbk'))
+                                    for temp in range(len(cmd_error)):
+                                        cmd_error[temp] = cmd_error[temp].replace('\r\n', '    ')
+                                    for temp in range(len(cmd_output)):
+                                        cmd_output[temp] = cmd_output[temp].replace('\r\n', '    ')
+                                    send_private_message(user_id,
+                                                       '运行结果：\n输出：{}，\n错误：{}'.format(cmd_output, cmd_error))
+                            elif message[1] == '运行java':
+                                with open(file=r'.\Main.java', mode='w+', encoding='utf-8') as f:
+                                    message = message_.split(' ', 2)
+                                    f.write(message[2])
+                                    f.close()
+                                string = r''
                                 cmd_output = []
                                 cmd_error = []
                                 run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
@@ -1220,107 +1310,128 @@ def get_json():
                                     cmd_output[temp] = cmd_output[temp].replace('\r\n', '    ')
                                 send_private_message(user_id,
                                                    '运行结果：\n输出：{}，\n错误：{}'.format(cmd_output, cmd_error))
-                        elif message[1] == '运行java':
-                            with open(file=r'.\Main.java', mode='w+', encoding='utf-8') as f:
-                                message = message_.split(' ', 2)
-                                f.write(message[2])
-                                f.close()
-                            string = r''#改为你的路径
-                            cmd_output = []
-                            cmd_error = []
-                            run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
-                            cmd_res['out'] = run.stdout.readlines()
-                            cmd_res['error'] = run.stderr.readlines()
-                            for temp in cmd_res['out']:
-                                cmd_output.append(temp.decode('gbk'))
-                            for temp in cmd_res['error']:
-                                cmd_error.append(temp.decode('gbk'))
-                            for temp in range(len(cmd_error)):
-                                cmd_error[temp] = cmd_error[temp].replace('\r\n', '    ')
-                            for temp in range(len(cmd_output)):
-                                cmd_output[temp] = cmd_output[temp].replace('\r\n', '    ')
-                            send_private_message(user_id,
-                                               '运行结果：\n输出：{}，\n错误：{}'.format(cmd_output, cmd_error))
-                        elif message[1] == '运行c':
-                            with open(file=r'.\library.c', mode='w+', encoding='utf-8') as f:
-                                message = message_.split(' ', 2)
-                                f.write(message[2])
-                                f.close()
-                            string = r''#改为你的路径
-                            cmd_output = []
-                            cmd_error = []
-                            run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
-                            cmd_res['out'] = run.stdout.readlines()
-                            cmd_res['error'] = run.stderr.readlines()
-                            for temp in cmd_res['out']:
-                                cmd_output.append(temp.decode('gbk'))
-                            for temp in cmd_res['error']:
-                                cmd_error.append(temp.decode('gbk'))
-                            for temp in range(len(cmd_error)):
-                                cmd_error[temp] = cmd_error[temp].replace('\r\n', '    ')
-                            for temp in range(len(cmd_output)):
-                                cmd_output[temp] = cmd_output[temp].replace('\r\n', '    ')
-                            send_private_message(user_id,
-                                               '编译结果：\n输出：{}，\n错误：{}'.format(cmd_output, cmd_error))
-                            string = r''#改为你的路径
-                            cmd_output = []
-                            cmd_error = []
-                            run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
-                            cmd_res['out'] = run.stdout.readlines()
-                            cmd_res['error'] = run.stderr.readlines()
-                            for temp in cmd_res['out']:
-                                cmd_output.append(temp.decode('utf-8'))
-                            for temp in cmd_res['error']:
-                                cmd_error.append(temp.decode('utf-8'))
-                            send_private_message(user_id,
-                                               '运行结果：\n输出：{}，\n错误：{}'.format(cmd_output, cmd_error))
-                        elif '天气查询' == message[0]:
-                            url = 'http://t.weather.sojson.com/api/weather/city/'
-                            city = message[1]
-                            f = open('city.json', 'rb')
-                            cities = load(f)
-                            city = cities.get(city)
-                            response = req.get(url + city)
-                            d = response.json()
-                            if d['status'] == 200:
+                            elif message[1] == '运行c':
+                                with open(file=r'.\library.c', mode='w+', encoding='utf-8') as f:
+                                    message = message_.split(' ', 2)
+                                    f.write(message[2])
+                                    f.close()
+                                string = r''
+                                cmd_output = []
+                                cmd_error = []
+                                run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
+                                cmd_res['out'] = run.stdout.readlines()
+                                cmd_res['error'] = run.stderr.readlines()
+                                for temp in cmd_res['out']:
+                                    cmd_output.append(temp.decode('gbk'))
+                                for temp in cmd_res['error']:
+                                    cmd_error.append(temp.decode('gbk'))
+                                for temp in range(len(cmd_error)):
+                                    cmd_error[temp] = cmd_error[temp].replace('\r\n', '    ')
+                                for temp in range(len(cmd_output)):
+                                    cmd_output[temp] = cmd_output[temp].replace('\r\n', '    ')
                                 send_private_message(user_id,
-                                                   '城市：{}\n时间{}\n温度：{}\n天气：{}\n'.format(
-                                                       (d["cityInfo"]["parent"], d["cityInfo"]["city"]),
-                                                       (d["time"], d["data"]["forecast"][0]["week"]), (
-                                                           d["data"]["forecast"][0]["high"],
-                                                           d["data"]["forecast"][0]["low"]),
-                                                       d["data"]["forecast"][0]["type"]))
-                        elif message[0] == '生成二维码':
-                            try:
-                                message = message_.split(' ')
-                                qr = QRCode(version=message[2], error_correction=ERROR_CORRECT_H,
-                                            box_size=message[3], border=message[4])
-                                qr.add_data(message[1])
-                                qr.make(message[5])
-                                img = qr.make_image(fill_color=message[6], back_color=message[7])
-                                with open(
-                                        r'D:\pythonproject\3000_lines_code\qq群机器人\cqhttp\data\images\qrcode.png',
-                                        'wb') as f:
-                                    img.save(f)
-                                    f.close()
-                                send_private_message(user_id, r'生成成功！图片[CQ:image,file=qrcode.png]')
-                            except IndexError:
-                                qr = QRCode(version=1, error_correction=ERROR_CORRECT_H,
-                                            box_size=10, border=4)
-                                qr.add_data(message[1])
-                                qr.make()
-                                img = qr.make_image(fill_color="orange", back_color="red")
-                                with open(
-                                        r'',#改为你的路径
-                                        'wb') as f:
-                                    img.save(f)
-                                    f.close()
-                                send_private_message(user_id, r'生成成功！图片[CQ:image,file=qrcode.png]')
-                        elif message[0] == '撤回消息':
-                            delete_private_message()
-                        elif message[0] == '查询音乐':
-                            pass
-                            '''
+                                                   '编译结果：\n输出：{}，\n错误：{}'.format(cmd_output, cmd_error))
+                                string = r''
+                                cmd_output = []
+                                cmd_error = []
+                                run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
+                                cmd_res['out'] = run.stdout.readlines()
+                                cmd_res['error'] = run.stderr.readlines()
+                                for temp in cmd_res['out']:
+                                    cmd_output.append(temp.decode('utf-8'))
+                                for temp in cmd_res['error']:
+                                    cmd_error.append(temp.decode('utf-8'))
+                                send_private_message(user_id,
+                                                   '运行结果：\n输出：{}，\n错误：{}'.format(cmd_output, cmd_error))
+                            elif '天气查询' == message[0]:
+                                if message[1] == '官方':
+                                    url = 'http://t.weather.sojson.com/api/weather/city/'
+                                    city = message[2]
+                                    f = open('city.json', 'rb')
+                                    cities = load(f)
+                                    city_get = cities.get(city)
+                                    response = req.get(url + city_get)
+                                    d = response.json()
+                                    if d['status'] == 200:
+                                        send_private_message(user_id,
+                                                           '[CQ:at,qq={}]\n城市：{}\n时间{}\n温度：{}\n天气：{}\n'.format(
+                                                               user_id,
+                                                               (d["cityInfo"]["parent"], d["cityInfo"]["city"]),
+                                                               (d["time"], d["data"]["forecast"][0]["week"]), (
+                                                                   d["data"]["forecast"][0]["high"],
+                                                                   d["data"]["forecast"][0]["low"]),
+                                                               d["data"]["forecast"][0]["type"]))
+                                elif message[1] == '高德':
+                                    workbook = xlrd.open_workbook(
+                                        r'')
+                                    string = message[2]
+                                    num = 0
+                                    sheet = workbook.sheet_by_index(0)
+                                    first_col = sheet.col_values(0)
+                                    sec_col = sheet.col_values(1)
+                                    for f in first_col:
+                                        if f == string:
+                                            break
+                                        num += 1
+                                    cont = list(sec_col)[num]
+                                    json = req.get(
+                                        'https://restapi.amap.com/v3/weather/weatherInfo?city={}&key='.format(
+                                            cont))
+                                    print(json.json())
+                                    content = '城市为：{}\n天气为：{}\n温度为：{}\n风向为：{}\n风级为：{}\n时间：{}'.format(
+                                        json.json()['lives'][0]['province'], json.json()['lives'][0]['weather'],
+                                        json.json()['lives'][0]['temperature_float'],
+                                        json.json()['lives'][0]['winddirection'], json.json()['lives'][0]['windpower'],
+                                        json.json()['lives'][0]['reporttime'])
+                                    send_private_message(user_id, '[CQ:at,qq={}] {}'.format(user_id, content))
+                                else:
+                                    url = 'http://t.weather.sojson.com/api/weather/city/'
+                                    city = message[2]
+                                    f = open('city.json', 'rb')
+                                    cities = load(f)
+                                    city_get = cities.get(city)
+                                    response = req.get(url + city_get)
+                                    d = response.json()
+                                    if d['status'] == 200:
+                                        send_private_message(user_id,
+                                                           '[CQ:at,qq={}]\n城市：{}\n时间{}\n温度：{}\n天气：{}\n'.format(
+                                                               user_id,
+                                                               (d["cityInfo"]["parent"],
+                                                                d["cityInfo"]["city"]),
+                                                               (
+                                                                   d["time"], d["data"]["forecast"][0]["week"]),
+                                                               (
+                                                                   d["data"]["forecast"][0]["high"],
+                                                                   d["data"]["forecast"][0]["low"]),
+                                                               d["data"]["forecast"][0]["type"]))
+                            elif message[0] == '生成二维码':
+                                try:
+                                    message = message_.split(' ')
+                                    qr = QRCode(version=message[2], error_correction=ERROR_CORRECT_H,
+                                                box_size=message[3], border=message[4])
+                                    qr.add_data(message[1])
+                                    qr.make(message[5])
+                                    img = qr.make_image(fill_color=message[6], back_color=message[7])
+                                    with open(
+                                            r'',
+                                            'wb') as f:
+                                        img.save(f)
+                                        f.close()
+                                    send_private_message(user_id, r'生成成功！图片[CQ:image,file=qrcode.png]')
+                                except IndexError:
+                                    qr = QRCode(version=1, error_correction=ERROR_CORRECT_H,
+                                                box_size=10, border=4)
+                                    qr.add_data(message[1])
+                                    qr.make()
+                                    img = qr.make_image(fill_color="orange", back_color="red")
+                                    with open(
+                                            r'',
+                                            'wb') as f:
+                                        img.save(f)
+                                        f.close()
+                                    send_private_message(user_id, r'生成成功！图片[CQ:image,file=qrcode.png]')
+                            elif message[0] == '撤回消息':
+                                delete_private_message()
                             elif message[0] == '加密':
                                 message = message_.split(' ', 2)
                                 string = message[1]
@@ -1337,72 +1448,307 @@ def get_json():
                                 new = parse.unquote(string_de)
                                 print(string_de)
                                 send_private_message(user_id, '明文：{}'.format(new))
-                            '''#本段代码有问题，请自行解决
-                        elif message[0] == 'chat':
-                            try:
-                                prompt = message[1]
-                                answer = \
-                                openai.Completion.create(model="text-davinci-003", prompt=prompt, temperature=1,
-                                                         max_tokens=int(message[2]), frequency_penalty=0,
-                                                         presence_penalty=0)["choices"][0]["text"].strip()
-                                send_private_message(user_id, '回答：{}'.format(answer))
-                            except IndexError:
-                                prompt = message[1]
-                                answer = \
-                                openai.Completion.create(model="text-davinci-003", prompt=prompt, temperature=1,
-                                                         max_tokens=100, frequency_penalty=0, presence_penalty=0)[
-                                    "choices"][0]["text"].strip()
-                                send_private_message(user_id, '回答：{}'.format(answer))
-                        elif message[1] == '生成图片':
-                            try:
-                                prompt = message[1]
-                                image = openai.Image.create(prompt=prompt,
-                                                            n=3,
-                                                            model="image-alpha-001",
-                                                            size=message[2],
-                                                            response_format="url")
+                            elif message[0] == 'chat':
+                                try:
+                                    prompt = message[1]
+                                    answer = \
+                                    openai.Completion.create(model="text-davinci-003", prompt=prompt, temperature=1,
+                                                             max_tokens=int(message[2]), frequency_penalty=0,
+                                                             presence_penalty=0)["choices"][0]["text"].strip()
+                                    send_private_message(user_id, '回答：{}'.format(answer))
+                                except IndexError:
+                                    prompt = message[1]
+                                    answer = \
+                                    openai.Completion.create(model="text-davinci-003", prompt=prompt, temperature=1,
+                                                             max_tokens=100, frequency_penalty=0, presence_penalty=0)[
+                                        "choices"][0]["text"].strip()
+                                    send_private_message(user_id, '回答：{}'.format(answer))
+                            elif message[0] == '生成图片':
+                                try:
+                                    prompt = message[1]
+                                    image = openai.Image.create(prompt=prompt,
+                                                                n=3,
+                                                                model="image-alpha-001",
+                                                                size=message[2],
+                                                                response_format="url")
 
-                                # 第一张图片
-                                image_rul = image["data"][0]["url"]
-                                res = req.get(image_rul)
-                                f = open(
-                                    file=r'D:\pythonproject\3000_lines_code\qq群机器人\cqhttp\data\images\image.jpg',
-                                    mode='wb')
-                                f.write(res.content)
-                                f.close()
-                                send_private_message(user_id,
-                                                   '生成成功！[CQ:image,file=image.jpg]')
-                            except IndexError:
-                                prompt = message[1]
-                                image = openai.Image.create(prompt=prompt,
-                                                            n=3,
-                                                            model="image-alpha-001",
-                                                            size='256x256',
-                                                            response_format="url")
+                                    # 第一张图片
+                                    image_rul = image["data"][0]["url"]
+                                    res = req.get(image_rul)
+                                    f = open(
+                                        file=r'',
+                                        mode='wb')
+                                    f.write(res.content)
+                                    f.close()
+                                    send_private_message(user_id,
+                                                       '生成成功！[CQ:image,file=image.jpg]')
+                                except IndexError:
+                                    prompt = message[1]
+                                    image = openai.Image.create(prompt=prompt,
+                                                                n=3,
+                                                                model="image-alpha-001",
+                                                                size='256x256',
+                                                                response_format="url")
 
-                                # 第一张图片
-                                image_rul = image["data"][0]["url"]
-                                res = req.get(image_rul)
-                                f = open(
-                                    file=r'D:\pythonproject\3000_lines_code\qq群机器人\cqhttp\data\images\image.jpg',
-                                    mode='wb')
-                                f.write(res.content)
-                                f.close()
+                                    # 第一张图片
+                                    image_rul = image["data"][0]["url"]
+                                    res = req.get(image_rul)
+                                    f = open(
+                                        file=r'',
+                                        mode='wb')
+                                    f.write(res.content)
+                                    f.close()
+                                    send_private_message(user_id,
+                                                       '生成成功！[CQ:image,file=image.jpg]')
+                            elif message[0] == '点歌':
+                                name = message[2]
+                                song = diange(name)
+                                send_private_message(user_id, song)
+                            elif message[0] == '搜索github项目':
+                                json = req.get('https://api.github.com/search/repositories?q={}'.format(message[2]))
+                                send_private_message(user_id, '名称{}，网址{}'.format(json.json()['items'][0][
+                                                                                                   'name'],
+                                                                                               json.json()['items'][0][
+                                                                                                   'html_url']))
+                            elif message[0] == 'ip' or message[1] == 'IP':
+                                ip = message[1]
+                                json = req.get(
+                                    'https://restapi.amap.com/v3/ip?ip={}&output=json&key='.format(
+                                        ip))
+                                cmd_output = []
+                                ping = Popen('ping {}'.format(ip), stdout=PIPE, shell=True, close_fds=True)
+                                cmd_res['out'] = ping.stdout.readlines()
+                                for temp in cmd_res['out']:
+                                    cmd_output.append(temp.decode('gbk'))
+                                for temp in range(len(cmd_output)):
+                                    cmd_output[temp] = cmd_output[temp].replace('\r\n', '    ')
                                 send_private_message(user_id,
-                                                   '生成成功！[CQ:image,file=image.jpg]')
-                        elif message[0] == '赞助':
-                            if message[1] == '微信':
+                                                   '高德：{}\nping:{}'.format(json.json()['province'], cmd_output))
+                            elif message[0] == '随机听歌':
+                                url = 'https://api.wqwlkj.cn/wqwlapi/wyy_random.php?type=json'
+                                netease = requests.get(url)
+                                netease_wyy = loads(netease.text)
+                                text = netease_wyy['data']
+                                netease_id = text['id']
+                                send_group_message(user_id, '[CQ:music,type=163,id={}]'.format(netease_id))
+                            elif message[0] == 'up信息':
+                                name = message[1]
+                                json = req.get(
+                                    'https://api.bilibili.com/x/web-interface/wbi/search/type?page=1&keyword={}&search_type=bili_user'.format(
+                                        name))
                                 send_private_message(user_id,
-                                                   '[CQ:image,file=weixinpay.png]求求赞助一下吧！')
-                            if message[1] == 'QQ' or message[1] == 'qq':
-                                send_private_message(user_id,
-                                                   '[CQ:image,file=qqpay.png]求求赞助一下吧！')
-                        elif message[0] == '反馈':
-                            content = message[1]
-                            with open(file='反馈.txt', mode='a+', encoding='utf-8') as f:
-                                f.write(content + '\n')
-                                f.close()
-                            send_private_message(user_id, '已成功反馈至作者电脑！感谢您的反馈！')
+                                                   f'搜索结果：\n用户名：{json.json()["data"]["result"][0]["uname"]}\nmid:{json.json()["data"]["result"][0]["mid"]}\n签名：{json.json()["data"]["result"][0]["usign"]}\n粉丝：{json.json()["data"]["result"][0]["fans"]}\n视频数量：{json.json()["data"]["result"][0]["videos"]}\n等级：{json.json()["data"]["result"][0]["level"]}\n以下是最新视频的内容：\naid:{json.json()["data"]["result"][0]["res"][0]["aid"]}\nbid:{json.json()["data"]["result"][0]["res"][0]["bvid"]}\n硬币：{json.json()["data"]["result"][0]["res"][0]["coin"]}\n标题：{json.json()["data"]["result"][0]["res"][0]["title"]}\n简介：{json.json()["data"]["result"][0]["res"][0]["desc"]}')
+                            elif message[0] == '赞助':
+                                if message[1] == '微信':
+                                    send_private_message(user_id,
+                                                       '[CQ:image,file=weixinpay.png]求求赞助一下吧！')
+                                if message[1] == 'QQ' or message[1] == 'qq':
+                                    send_private_message(user_id,
+                                                       '[CQ:image,file=qqpay.png]求求赞助一下吧！')
+                            elif message[0] == '反馈':
+                                content = message[1]
+                                with open(file='反馈.txt', mode='a+', encoding='utf-8') as f:
+                                    f.write(content + '\n')
+                                    f.close()
+                                send_private_message(user_id, '已成功反馈至作者电脑！感谢您的反馈！')
+                            elif 'code' in message[0]:
+                                # 命令功能
+                                if user_id in adminlist:
+                                    if 'blacklist' in message[0]:
+                                        if 'append' in message[1]:
+                                            if int(message[2]) not in blacklist:
+                                                blacklist.append(int(message[3]))
+                                                send_private_message(user_id, 'blacklist{}'.format(blacklist))
+                                        elif 'remove' in message[1]:
+                                            blacklist.remove(int(message[2]))
+                                            send_private_message(user_id, 'blacklist{}'.format(blacklist))
+                                        elif 'save' in message[1]:
+                                            with open(file='black_list.txt', mode='w+', encoding='utf-8') as f:
+                                                f.write(str(blacklist))
+                                                f.close()
+                                            send_private_message(user_id,
+                                                               '保存成功！blacklist{}'.format(blacklist))
+                                        elif 'show' in message[1]:
+                                            send_private_message(user_id, 'blacklist{}'.format(blacklist))
+                                        else:
+                                            send_private_message(user_id, '无效的指令！')
+                                    elif 'adminlist' in message[0]:
+                                        if 'append' in message[1]:
+                                            if int(message[2]) not in adminlist:
+                                                adminlist.append(int(message[3]))
+                                                send_private_message(user_id,
+                                                                   'adminlist{}'.format(adminlist))
+                                        elif 'remove' in message[1]:
+                                            adminlist.remove(int(message[2]))
+                                            send_private_message(user_id,
+                                                               'adminlist{}'.format(adminlist))
+                                        elif 'save' in message[1]:
+                                            with open(file='admin_list.txt', mode='w+', encoding='utf-8') as f:
+                                                f.write(str(adminlist))
+                                                f.close()
+                                            send_private_message(user_id,
+                                                               '保存成功！adminlist{}'.format(adminlist))
+                                        elif 'show' in message[1]:
+                                            send_private_message(user_id, 'adminlist{}'.format(adminlist))
+                                        else:
+                                            send_private_message(user_id, '无效的指令！')
+                                    elif '运行python' in message[0]:
+                                        # 运行代码功能
+                                        with open(file=r'.\run_command.py', mode='w+', encoding='utf-8') as f:
+                                            try:
+                                                f.write('from math import *\nfrom 机器人 import *\n')
+                                                f.write(message[1] + ' ' + message[2] + ' ' + message[3])
+                                            except IndexError:
+                                                try:
+                                                    f.write(message[1] + ' ' + message[2])
+                                                except IndexError:
+                                                    f.write(message[1])
+                                            finally:
+                                                f.close()
+                                        string = r''
+                                        cmd_output = []
+                                        cmd_error = []
+                                        run = Popen(string, stderr=PIPE, stdout=PIPE, close_fds=True, shell=True)
+                                        cmd_res['out'] = run.stdout.readlines()
+                                        cmd_res['error'] = run.stderr.readlines()
+                                        for temp in cmd_res['out']:
+                                            cmd_output.append(temp.decode('utf-8'))
+                                        for temp in cmd_res['error']:
+                                            cmd_error.append(temp.decode('utf-8'))
+                                        send_private_message(user_id,
+                                                           '运行结果：\n输出：{}，\n错误：{}'.format(cmd_output, cmd_error))
+                                    elif 'OPonly' in message[0]:
+                                        set = message[1]
+                                        if set == 'True':
+                                            OPonly = True
+                                            send_private_message(user_id,
+                                                               'OPonly{}'.format(OPonly))
+                                        if set == 'False':
+                                            OPonly = False
+                                            send_private_message(user_id,
+                                                               'OPonly{}'.format(OPonly))
+                                        else:
+                                            send_private_message(user_id, '无效的指令！')
+                                    elif 'pythonlist' in message[0]:
+                                        if 'append' in message[1]:
+                                            if int(message[3]) not in python_list:
+                                                python_list.append(int(message[3]))
+                                                send_private_message(user_id,
+                                                                   'pythonlist{}'.format(python_list))
+                                        elif 'remove' in message[1]:
+                                            python_list.remove(int(message[2]))
+                                            send_private_message(user_id,
+                                                               'pythonlist{}'.format(python_list))
+                                        elif 'save' in message[1]:
+                                            with open(file='can_use_python_list.txt', mode='w+',
+                                                      encoding='utf-8') as f:
+                                                f.write(str(python_list))
+                                                f.close()
+                                            send_private_message(user_id,
+                                                               '保存成功！pythonlist{}'.format(python_list))
+                                        elif 'show' in message[1]:
+                                            send_private_message(user_id, 'pythonlist{}'.format(python_list))
+                                        else:
+                                            send_private_message(user_id, '无效的指令！')
+                                    elif 'chatgptlist' in message[0]:
+                                        if 'append' in message[1]:
+                                            if int(message[2]) not in chat_gpt_list:
+                                                chat_gpt_list.append(int(message[3]))
+                                                send_private_message(user_id,
+                                                                   'chatgptlist{}'.format(chat_gpt_list))
+                                        elif 'remove' in message[1]:
+                                            chat_gpt_list.remove(int(message[2]))
+                                            send_private_message(user_id,
+                                                               'chatgptlist{}'.format(chat_gpt_list))
+                                        elif 'save' in message[1]:
+                                            with open(file='chat_gpt_list.txt', mode='w+',
+                                                      encoding='utf-8') as f:
+                                                f.write(str(chat_gpt_list))
+                                                f.close()
+                                            send_private_message(user_id,
+                                                               '保存成功！chatgptlist{}'.format(chat_gpt_list))
+                                        elif 'show' in message[1]:
+                                            send_private_message(user_id, 'chatgptlist{}'.format(chat_gpt_list))
+                                        else:
+                                            send_private_message(user_id, '[CQ:at,qq={}] 无效的指令！'.format(user_id))
+                                    elif 'summonimage' in message[0]:
+                                        if 'append' in message[1]:
+                                            if int(message[2]) not in summon_images_list:
+                                                summon_images_list.append(int(message[2]))
+                                                send_private_message(user_id,
+                                                                   'summonimageslist{}'.format(summon_images_list))
+                                        elif 'remove' in message[1]:
+                                            summon_images_list.remove(int(message[2]))
+                                            send_private_message(user_id,
+                                                               'summonimageslist{}'.format(summon_images_list))
+                                        elif 'save' in message[1]:
+                                            with open(file='summon_images_list.txt', mode='w+',
+                                                      encoding='utf-8') as f:
+                                                f.write(str(summon_images_list))
+                                                f.close()
+                                            send_private_message(user_id,
+                                                               '保存成功！summonimageslist{}'.format(summon_images_list))
+                                        elif 'show' in message[1]:
+                                            send_private_message(user_id, 'summonimageslist{}'.format(summon_images_list))
+                                        else:
+                                            send_private_message(user_id, '无效的指令！')
+                                    elif 'clist' in message[0]:
+                                        if 'append' in message[1]:
+                                            if int(message[2]) not in c_list:
+                                                c_list.append(int(message[2]))
+                                                send_group_message(user_id,
+                                                                   'clist{}'.format(c_list))
+                                        elif 'remove' in message[1]:
+                                            c_list.remove(int(message[2]))
+                                            send_private_message(user_id,
+                                                               'clist{}'.format(c_list))
+                                        elif 'save' in message[1]:
+                                            with open(file='can_use_c_list.txt', mode='w+',
+                                                      encoding='utf-8') as f:
+                                                f.write(str(c_list))
+                                                f.close()
+                                            send_private_message(user_id,
+                                                               '保存成功！clist{}'.format(c_list))
+                                        elif 'show' in message[1]:
+                                            send_private_message(user_id, 'clist{}'.format(c_list))
+                                        else:
+                                            send_private_message(user_id, '无效的指令！')
+                                    elif 'javalist' in message[0]:
+                                        if 'append' in message[1]:
+                                            if int(message[2]) not in java_list:
+                                                java_list.append(int(message[2]))
+                                                send_private_message(user_id,
+                                                                   'javalist{}'.format(java_list))
+                                        elif 'remove' in message[1]:
+                                            java_list.remove(int(message[2]))
+                                            send_private_message(user_id,
+                                                               'javalist{}'.format(java_list))
+                                        elif 'save' in message[1]:
+                                            with open(file='can_use_java_list.txt', mode='w+',
+                                                      encoding='utf-8') as f:
+                                                f.write(str(java_list))
+                                                f.close()
+                                            send_private_message(user_id,
+                                                               '保存成功！javalist{}'.format(java_list))
+                                        elif 'show' in message[1]:
+                                            send_private_message(user_id, 'javalist{}'.format(java_list))
+                                        else:
+                                            send_private_message(user_id, '无效的指令！')
+                                    elif 'autosave' in message[0]:
+                                        if 'set' in message[1]:
+                                            autosave = bool(message[2])
+                                            send_private_message(user_id,
+                                                               'autosave{}'.format(autosave))
+                                        elif 'show' in message[1]:
+                                            send_private_message(user_id, 'autosave{}'.format(autosave))
+                                    else:
+                                        send_group_message(user_id, '[CQ:at,qq={}] 无效的指令！'.format(user_id))
+                                else:
+                                    send_group_message(user_id, '[CQ:at,qq={}] 你没有权限！'.format(user_id))
+                            else:
+                                send_private_message(user_id, '你说什么呢？？？')
+                        else:
+                            send_private_message(user_id, '你没有权限！')
             except Exception as e:
                 raise
             with open(file='black_list.txt', mode='r+', encoding='utf-8') as f:
